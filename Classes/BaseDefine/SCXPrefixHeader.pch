@@ -1,0 +1,94 @@
+//
+//  SCXPrefixHeader.pch
+//  SCXiOS
+//
+//  Created by wll on 2019/1/8.
+//  Copyright © 2019 wll. All rights reserved.
+//
+
+#ifndef SCXPrefixHeader_pch
+#define SCXPrefixHeader_pch
+
+
+#import "SCXAppKeyDefine.h"
+#import <SDAutoLayout.h>
+#import "UIBarButtonItem+WLBarButtonItem.h"
+#import "UINavigationBar+WLNavigationBar.h"
+#import "UIColor+Colorful.h"
+#import "NSString+WLString.h"
+#import <Masonry.h>
+#import "PageTitleView.h"
+#import "PageContentView.h"
+#import <YYModel.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import <MJRefresh/MJRefresh.h>
+#import "SCXRefreshFooter.h"
+#import "SCXRefreshHeader.h"
+#import "UIView+Additions.h"
+#import "SystemManager.h"
+//#import "SCXUserInfoManager.h"
+#import "WLFileManager.h"
+/** rgb颜色转换（16进制->10进制 */
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+/** 输出 */
+#ifdef DEBUG
+# define NSLog(fmt, ...) NSLog((@"\n[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#else
+# define NSLog(...) {}
+#endif
+/** 设置弱引用 */
+#define kWeakSelf(toName,instance)   __weak typeof(&*instance)toName = instance
+
+/** 大图占位图 */
+#define SCXPlaceHolderImage [UIImage imageNamed:@"banner_pic"]
+/** 商品占位图 */
+#define SCXPlaceHolderGoodsImage [UIImage imageNamed:@"pic"]
+/** 用户头像占位图 */
+#define SCXPlaceHolderImageUserAvatar [UIImage imageNamed:@"mine_head"]
+/** 是否是iPhoneX系列 */
+#define iPhoneX (MIN([UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height) >= 375 &&  MAX([UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height) >= 812)
+
+/** 导航加状态栏高度 */
+#define navAddStatusHeight (iPhoneX ? 88 : 64)
+
+/** tabBar高度 */
+#define tabBarHeight (iPhoneX ? 84 : 49)
+
+//字体大小
+#define FONT_Custom(font) [UIFont systemFontOfSize:font]
+
+#define FONT_10 [UIFont systemFontOfSize:10]
+#define FONT_12 [UIFont systemFontOfSize:12]
+#define FONT_13 [UIFont systemFontOfSize:13]
+#define FONT_14 [UIFont systemFontOfSize:14]
+#define FONT_15 [UIFont systemFontOfSize:15]
+#define FONT_18 [UIFont systemFontOfSize:18]
+#define FONT_20 [UIFont systemFontOfSize:20]
+#define FONT_28 [UIFont systemFontOfSize:28]
+#define FONT_40 [UIFont systemFontOfSize:40]
+// 屏幕宽高
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kTabbarHeight self.tabBarController.tabBar.bounds.size.height
+#define kNavigationbarHeight (self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height)
+// 常用颜色
+#define Normal_whiteColor [UIColor whiteColor]
+#define Normal_ThemeColor [UIColor colorWithHexString:@"#fa7000"]
+
+#define Normal_BgColor [UIColor colorWithHexString:@"#f3f3f3"]
+#define Normal_999Color [UIColor colorWithHexString:@"#999999"]
+#define Normal_666Color [UIColor colorWithHexString:@"#666666"]
+#define Normal_333Color [UIColor colorWithHexString:@"#333333"]
+#define Normal_EEEColor [UIColor colorWithHexString:@"#eeeeee"]
+#define Normal_DotColor [UIColor colorWithHexString:@"#AAD4F2"]
+#define Normal_CCCColor [UIColor colorWithHexString:@"#eeeeee"]
+#define Color_B2B2B2 [UIColor colorWithHexString:@"#B2B2B2"]
+
+// Storyboard
+#define MineStoryboard [UIStoryboard storyboardWithName:@"Mine" bundle:nil]
+#endif /* SCXPrefixHeader_pch */
